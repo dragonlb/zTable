@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link href="./jquery-ztable2/css/blue/ztable.css" rel="stylesheet" type="text/css" id="ui-ztable-css-load">
+<script type="text/javascript" src="./jquery/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="./jquery-ztable2/js/knockout-2.2.1.js"></script>
+<script type="text/javascript" src="./jquery-ztable2/js/zTable2.js"></script>
+</head>
+<body>
+
+<div style="float:left; margin-top:10px;">
+    <div id="ztable" style="display: none;">
+		<div property="columns">
+			<div width="20" zCode="code" zType="checkbox"></div>
+			<div header="基本信息">
+				<div property="columns">
+					<div width="100" rsKey="NAME" align="center" render="nameConvert">角色名称</div>
+					<div width="20" rsKey="SEX" align="center" render="sexConvert">性别</div>
+				</div>
+			</div>
+			<div width="130" rsKey="STATUS" align="center" render="statusConvert">状态</div>
+			<div width="138" rsKey="DESCRIPTION" align="center">描述</div>
+			<div width="138" render="operatConvert" align="center">操作</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	ztable=null;
+
+	var vList = [];
+	for(var i=0;i<35;i++){
+		vList[i] = {code:"c_"+i, "NAME":'name_'+i, "STATUS":i%2, "DESCRIPTION":"描述_"+i, "SEX":1};
+	}
+
+	$(function(){
+		ztable = new zTable("ztable", {
+				//actionUrl : '${base}/pagger/list4Ajax/roleList',
+				resultSet	: {pageListVO:{pageList:vList, pageSize:100, pageIndex:10}},
+				attachParam : function(data) {
+					var retObj = {
+						name : $("#name").val(),
+						status : $("#status").val()
+					};
+					return retObj;
+				},
+				width: 1000,
+				height: 300,
+				pageSize: 10, 
+				pageIndex:1,
+				resizable:true 
+			}); 
+	});
+
+	function nameConvert(rs){
+		return "R_"+rs["NAME"];
+	}
+
+	function statusConvert(rs){
+		if(rs["STATUS"]==1){
+			return "正常";
+		}
+		else{
+			return "-";
+		}
+	}
+
+	function sexConvert(rs){
+		if(rs["SEX"]==1){
+			return "男";
+		}
+		else{
+			return "女";
+		}
+	}
+
+	function operatConvert(rs){
+		return "<a href='#"+rs["NAME"]+"' >编辑</a>";
+	}
+
+	zTableTool.lazyBind();
+
+</script>
+</body>
+
+</html>

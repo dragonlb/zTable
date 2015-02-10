@@ -1,0 +1,216 @@
+.zTable {
+	line-height:30px;
+	color:#333;
+	text-align: center;
+	margin-top: 10px;
+	width:100%;
+}
+
+.zTableTd_h-1{
+	background-color:#ffffff;
+}
+
+.zTable .zTableTbody_h tr .zTableTd_h0 {
+	background-color:#37aac2;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #e5e5e5;
+	border-bottom-color: #e5e5e5;
+	border-left-color: #e5e5e5;
+	height: 28px;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+}
+
+.zTable .zTableTbody_h tr .zTableTd_h0_x {
+	background-color:#fff;
+	color:#135BA5;
+	font-weight:bold;
+}
+
+.zTable .zTableTbody_h tr .zTableTd_h1 {
+	background-color:#37aac2;
+	border: 1px solid #e5e5e5;
+	color:#fff;
+	font-weight:bold;
+}
+
+.zTable .zTableTbody_h tr .zTableTd_h1_x {
+	background-color:#ffffff
+	border: 1px solid #CCC;
+}
+.zTable .zTableTbody_h tr .zTableTd_h0 .sortUp, .zTable .zTableTbody_h tr .zTableTd_h1 .sortUp {
+	float:right;
+	width:7px;
+	height:6px;
+	margin-top:7px;
+	margin-right:10px;
+	background-image:url(./images/ztable_sort-up.png);
+	text-decoration:none;
+}
+.zTable .zTableTbody_h tr .zTableTd_h0 .sortUp:hover, .zTable .zTableTbody_h tr .zTableTd_h1 .sortUp:hover {
+	background-image:url(./images/ztable_sort_over-up.png);
+}
+.zTable .zTableTbody_h tr .zTableTd_h0 .sortDown, .zTable .zTableTbody_h tr .zTableTd_h1 .sortDown {
+	float:right;
+	width:7px;
+	height:6px;
+	margin-top:7px;
+	margin-right:10px;
+	background-image:url(./images/ztable_sort-down.png);
+	text-decoration:none;
+}
+.zTable .zTableTbody_h tr .zTableTd_h0 .sortDown:hover, .zTable .zTableTbody_h tr .zTableTd_h1 .sortDown:hover {
+	background-image:url(./images/ztable_sort_over-down.png);
+}
+.zTable .zTableTbody_b tr .zTableTd_b0 {
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-bottom-color: #e5e5e5;
+	border-left-color: #e5e5e5;
+}
+.zTable .zTableTbody_b tr .zTableTd_b1 {
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-right-color: #e5e5e5;
+	border-bottom-color: #e5e5e5;
+	border-left-color: #e5e5e5;
+}
+.zTable .zTableTbody_b tr .zTableTd_bAll {
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #e5e5e5;
+	border-right-color: #e5e5e5;
+	border-bottom-color: #e5e5e5;
+	border-left-color: #e5e5e5;
+	height: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+.zTable .zTableTbody_b tr .zTableFixed {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+}
+/* ******************************  Page css [Yellow] *******************************/
+.zTablePageYellow{
+	float: right;
+    margin-top: 8px;
+    overflow:hidden;
+    position: relative;
+}
+.zTablePageYellow .currentYellow{
+	float: right;
+	color: #960;
+	font-size: 12px;
+	text-decoration: none;
+	text-align: center;
+	border-bottom: 2px solid;
+}
+.zTablePageYellow a {
+	float: left;
+   	color: #555555;
+    font-size: 12px;
+    text-decoration: none;
+    padding: 0.3em 0.5em;
+	margin-bottom: 2px;
+}
+
+.zTablePageYellow .currentYellow_ {
+	float:right;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+}
+.zTablePageYellow .nextYellow{
+	float:right;
+	color:#999;
+	border-color:#999;
+	background:#fff;
+	border-bottom:0px;
+	border-right: 0px;
+	margin-right: 0px;
+	padding-right: 0px;
+	background-color: transparent;
+}
+
+.zTablePageYellow .prevYellow{
+	float:right;
+	color:#999;
+	border-color:#999;
+	background:#fff;
+	border-bottom:0px;
+	background-color: transparent;
+}
+.zTablePageYellow .resultDivYellow{
+	margin-left: 5px;
+	padding: 0px;
+	text-align: right;
+	float: right;
+	color: #960;
+}
+.zTable .zTableTbody_h tr .zTableTd_h0 em, .zTable .zTableTbody_h tr .zTableTd_h1 em {
+	font-style: normal;
+}
+
+/* ******************************  Page css [Blue] *******************************/
+.zTablePageBlue{
+	float: right;
+    margin-top: 8px;
+    overflow:hidden;
+    position: relative;
+}
+.zTablePageBlue .currentBlue {
+	font-weight:bold;
+    background-color:#ff9900;
+}
+.zTablePageBlue a:hover {
+	text-decoration:none;
+}
+.zTablePageBlue a {
+	float: right;
+	width:22px;
+	line-height:22px;
+	text-align: center;
+   	color: #fff;
+    background-color:#37AAC2;
+    margin-right:5px;
+}
+.zTablePageBlue .nextBlue {
+	float:right;
+}
+.zTablePageBlue .prevBlue{
+	float:right;
+	color:#fff;
+	text-align: center;
+}
+.zTablePageBlue .resultDivBlue {
+	margin-left: 5px;
+	float: right;
+	line-height:22px;
+}
+.zTablePageBlue .resultDivBlue select {
+	height:22px;
+}
+.zTablePageBlue .resultDivBlue span {
+	float:left;
+}

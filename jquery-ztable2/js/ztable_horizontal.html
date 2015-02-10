@@ -1,0 +1,286 @@
+﻿<script type="text/html" id="_ztable_temp_horizontal">
+<div zclass="inContainer" class="zero-table" data-bind="style:{width: width()+'px'}">
+  <div class="zero-panel-viewport zero-grid-viewport" style="overflow:hidden">
+    <table class="zero-grid-table" cellspacing="0" cellpadding="0" border="0" style="height: auto; width:100%;">
+	  <!-- ko if: undefined!=headColumns && undefined!=headColumns.leaves -->
+	  <tbody>
+		<tr data-bind="foreach: {data: headColumns.leaves, as: 'leaf'}">
+			<td style="padding:0;border:0;margin:0;height:0px;" data-bind="attr:{width: leaf.width, key:leaf.rsKey()}"></td>
+		</tr>
+	  </tbody>
+	  <!-- /ko -->
+      <tbody data-bind="foreach: {data: headColumns.all, as: 'oneTr'}">
+	  	<tr data-bind="foreach: oneTr">
+			<td name="ztable_head_column" class="zero-grid-headerCell zero-grid-bottomCell" style="text-align:center;" data-bind="attr:{rowspan:$data.rowspan, colspan: $data.colspan, father: $data.preNode}">
+				<div class="zero-grid-headerCell-outer">
+					<div class="zero-grid-headerCell-inner  zero-grid-headerCell-nowrap ">
+						<!-- ko if:$data.zType()=='checkbox' -->
+							<input type="checkbox" data-bind="{attr:{name:$data.zCode}}" onclick="javascript:_ztCheckboxHeadClick(this)" >
+						<!-- /ko -->
+						<span data-bind="html: $data.value?$data.value:'&nbsp;'"></span>
+					</div>
+					<div class="zero-grid-column-splitter" onmousedown="javascript:_ztSpritterDown(this)"></div>
+				</div>
+			</td>
+		</tr>
+      </tbody>
+    </table>
+    <div class="zero-grid-topRightCell"></div>
+  </div>
+  <div class="zero-grid-rows-view" style="margin-left: 0px; width: 100%" data-bind="style:{height: height()+'px'}" onscroll="javascript:_ztBodyScroll(this)">
+  	<div class="zero-grid-rows-content" data-bind="style:{width: width()+'px'}">
+    <table class="zero-grid-table" cellspacing="0" cellpadding="0" border="0" style="width:100%;">
+	  <tbody>
+	  <!-- ko if: undefined!=headColumns && undefined!=headColumns.leaves -->
+		<tr data-bind="foreach: {data: headColumns.leaves, as: 'leaf'}">
+			<td style="padding:0;border:0;margin:0;height:0px;" data-bind="attr:{width: leaf.width}"></td>
+		</tr>
+	  <!-- /ko -->
+	  </tbody>
+	  <tbody>
+	  <!-- ko if: undefined==resultSet || resultSet().length==0 -->
+	  	<tr>
+          <td class="zero-grid-emptyText" colspan="14">没有返回的数据...</td>
+        </tr>
+	  <!-- /ko -->
+	  </tbody>
+	  <tbody data-bind="foreach: {data: resultSet, as: 'rs'}">
+		<tr data-bind="{foreach: {data: $parent.headColumns.leaves, as: 'headCo'}, css:{'ztable-odd-tr':$index()%2==1, 'ztable-even-tr':$index()%2==0} }">
+			<td class="zero-grid-cell ">
+				<!-- ko if:headCo.zType()=='#index' -->
+				<span data-bind="{text: $parentContext.$index()+1}"> </span>
+				<!-- /ko -->
+				<!-- ko if:headCo.zType()=='#INDEX' -->
+				<span data-bind="{text: $parentContext.$index()+1+($parents[1].tableSet.pageSize()*($parents[1].tableSet.pageIndex()-1))}"> </span>
+				<!-- /ko -->
+				<!-- ko if:headCo.zType()=='checkbox' -->
+				<input type="checkbox" data-bind="{attr:{zname: headCo.zCode, zvalue:$parentContext.$index()}, checked:$parents[1].diy[headCo.zCode()]()[$parentContext.$index()]}" onclick="javascript:_ztCheckboxClick(this)" />
+				<!-- /ko -->
+				<!-- ko if:headCo.render() -->
+					<div class="zero-grid-cell-inner zero-grid-cell-nowrap" data-bind="{attr:{align: headCo.align(), key:headCo.rsKey()} ,html: headCo.render.fun(rs) }"></div>
+				<!-- /ko -->
+				<!-- ko ifnot:headCo.render() -->
+					<div class="zero-grid-cell-inner zero-grid-cell-nowrap" data-bind="{attr:{title: rs[headCo.rsKey()], align: headCo.align(), key:headCo.rsKey()} ,text: rs[headCo.rsKey()]}"></div>
+				<!-- /ko -->
+			</td>
+		</tr>
+	  </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="zero-grid-pager" style="display: block;">
+    <div class="zero-pager" id="zero-15" style="">
+      <div class="zero-pager-left">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td>
+			  	<span class="zero-pager-size" style="">
+					<select style="width:auto" data-bind="{options: tableSet.pageSizeOpts, value: tableSet.pageSize, event:{change: tableSet.changePageSize}}"></select>
+                </span>
+				<span class="separator"></span></span>
+				<a href="javascript:void(0)" title="首页" data-bind="{event:{click: tableSet.toFirstPage}, css: {'zero-button zero-button-plain':true, 'zero-button-disabled':tableSet.pageIndex()<=1}}">
+					<span class="zero-button-text  zero-button-iconOnly zero-pager-first">&nbsp;</span>
+				</a>
+				<a href="javascript:void(0)" title="上一页" data-bind="{event:{click: tableSet.toPrePage}, css: {'zero-button zero-button-plain':true, 'zero-button-disabled':tableSet.pageIndex()<=1}}">
+					<span class="zero-button-text  zero-button-iconOnly zero-pager-prev">&nbsp;</span>
+				</a><span class="zero-pager-index" style="">
+                	<input type="text" class="zero-pager-num" data-bind="{value:tableSet.pageIndex, event:{blur: tableSet.toPage}}">
+                	<span class="zero-pager-pages">/ <!--ko {text:tableSet.pageCount} --><!-- /ko --></span></span>
+					<a href="javascript:void(0)" title="下一页" data-bind="{event:{click: tableSet.toNextPage}, css: {'zero-button zero-button-plain':true, 'zero-button-disabled':tableSet.pageIndex()>=tableSet.pageCount()}}">
+						<span class="zero-button-text  zero-button-iconOnly zero-pager-next">&nbsp;</span>
+					</a>
+					<a href="javascript:void(0)" title="尾页" data-bind="{event:{click: tableSet.toLastPage}, css: {'zero-button zero-button-plain':true, 'zero-button-disabled':tableSet.pageIndex()>=tableSet.pageCount()}}">
+						<span class="zero-button-text  zero-button-iconOnly zero-pager-last">&nbsp;</span>
+					</a>
+					<!-- 
+					<span class="separator" style=""></span>
+					<a class="zero-button zero-button-plain" href="javascript:void(0)" title="刷新" style="">
+						<span class="zero-button-text  zero-button-iconOnly zero-pager-reload" data-bind="event:{click: refresh}">&nbsp;</span>
+					</a>
+					-->
+				</td>
+              <td><div class="zero-page-buttons"></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="zero-pager-right" style="">每页 <!--ko text:tableSet.pageSize() --><!-- /ko --> 条,共 <!--ko text:tableSet.total --><!-- /ko --> 条</div>
+    </div>
+  </div>
+  <!-- ko if:resizable() -->
+  <div class="zero-resizer-trigger" onmousedown="javascript:_ztResizeDown(this)" ></div>
+  <!-- /ko -->
+</div>
+
+<div>
+</script>
+<script type="text/javascript">
+var jBody = $("body");
+var zDivResize = $('<div class="zero-lb-resize" style="display:none;position:absolute;z-index:99;height:0;width:0;top:-99;left:-99"></div>');
+var zDivBound = $('<div class="zero-lb-bound" style="position:absolute;float:left;width:3px;background-color:red;top:-99;left:-99"></div>');
+function _ztBodyScroll(e){
+	var scrollBarWidth = 16;
+	var self = $(e);
+	var tjb=self.parent().find(".zero-panel-viewport");
+	self.scroll(function(){tjb.scrollLeft(self.scrollLeft());});
+}
+
+function _ztSpritterDown(e){
+	if(zTableTool.browser.ie() && parseInt(zTableTool.browser.ie())<=7){
+		return;
+	}
+	var jSelf = $(e);
+	var jtd = jSelf.parent().parent();
+	var jContainer = jSelf.parents("[zclass='inContainer']").addClass("zero-unselected");
+	var jPager = $(".zero-grid-pager");
+	var tempDiv = zDivResize.appendTo(jContainer).show();
+	tempDiv.offset(jtd.offset());
+	tempDiv.height(jContainer.height()-jPager.height()+jContainer.offset().top-jtd.offset().top)
+			.width(jtd.width());
+	var oriData = {
+		offset: tempDiv.offset(),
+		width: tempDiv.width(),
+		koData: ko.dataFor(e)
+	};
+	jBody.bind('mouseup', oriData, function(){
+		jContainer.removeClass("zero-unselected");
+		oriData.koData.width(tempDiv.width());
+		tempDiv.remove();
+		jBody.unbind('mousemove').unbind('mouseup');
+	});
+	jBody.bind('mousemove', oriData, function(e){
+		tempDiv.width(e.clientX-oriData.offset.left);
+	});
+}
+
+function _ztResizeDown(dom){
+	var jSelf = $(dom);
+	var jContainer = jSelf.parent();
+	var jPage = $(".zero-grid-pager");
+	var jHead = $(".zero-panel-viewport");
+	jBody.addClass("zero-unselected");
+	var tempDiv = zDivResize.appendTo(jContainer).show();
+	tempDiv.offset(jContainer.offset());
+	tempDiv.height(jContainer.height())
+			.width(jContainer.width());
+	var oriData = {
+		offset: tempDiv.offset(),
+		oriHeight: tempDiv.height(),
+		oriWidth: tempDiv.width(),
+		oriX: event.clientX,
+		oriY: event.clientY,
+		width: tempDiv.width(),
+		koData: ko.dataFor(dom)
+	};
+	jBody.bind('mouseup', oriData, function(){
+		
+		jBody.removeClass("zero-unselected");
+		oriData.koData.width(tempDiv.width());
+		oriData.koData.height(tempDiv.height()-jPage.height()-jHead.height());
+		tempDiv.remove();
+		jBody.unbind('mousemove').unbind('mouseup');
+	});
+	jBody.bind('mousemove', oriData, function(){
+		tempDiv.width(oriData.oriWidth+event.clientX-oriData.oriX)
+				.height(oriData.oriHeight+event.clientY-oriData.oriY);
+		
+	});
+}
+
+function _ztCheckboxClick(dom){
+	var jDom = $(dom);
+	var container = jDom.parents(".zero-table");
+	var jSatDom = container.find("[name='"+jDom.attr("zname")+"']");
+	if(!jSatDom || jSatDom[0].tagName!='INPUT' || jSatDom.attr("type")!='checkbox')	return;
+	var needChecked = true;
+	$.each(container.find("[zname='"+jDom.attr("zname")+"']"), function(i, item){
+		var jItem = $(item);
+		if(!jItem.prop("checked")){	
+			needChecked = false;
+			return false;
+		}
+	});
+	jSatDom.prop("checked", needChecked);
+}
+
+function _ztCheckboxHeadClick(dom){
+	var jDom = $(dom);
+	var container = jDom.parents(".zero-table");
+	var jSatDom = container.find("[name='"+jDom.attr("zname")+"']");
+	var needChecked = jDom[0].checked?true:false;
+	$.each(container.find("[zname='"+jDom.attr("name")+"']"), function(i, item){
+		var jItem = $(item);
+		if(!jItem || jItem[0].tagName!='INPUT' || jItem.attr("type")!='checkbox')	return true;
+		if(needChecked != jItem[0].checked)	jItem.trigger("click");
+	});
+}
+
+var ztable_dragData = {
+	isDrag: false,
+	koData: null
+};
+
+jBody.delegate(".zero-grid-headerCell2", "mousedown", function(e){
+	var self = $(this).children();
+	var tempDiv = self
+					.clone()
+					.addClass("zero-grid-headerCell")
+					.css("z-index", 99)
+					.height(self.height()).width(self.width())
+					.css({"position": "absolute", "float":"left", "text-align": "center"});
+	var oriData = {
+		oriTop: self.offset().top,
+		oriLeft: self.offset().left,
+		oriHeight: tempDiv.height(),
+		oriWidth: tempDiv.width(),
+		oriX: e.clientX,
+		oriY: e.clientY,
+		dragFather: self.parent().attr("father"),
+		dragKoData: ko.contextFor(this)
+	};
+	tempDiv.appendTo(jBody);
+	jBody.addClass("zero-unselected");
+	jBody.bind('mouseup', oriData, function(){
+		tempDiv.remove();
+		jBody.removeClass("zero-unselected").unbind('mousemove').unbind('mouseup');
+		ztable_dragData.isDrag = false;
+		ztable_dragData.koData = null;
+	});
+	jBody.bind('mousemove', oriData, function(e){
+		//tempDiv.offset({top: parseInt(oriData.oriTop+e.clientY-oriData.oriY),left: parseInt(oriData.oriLeft+e.clientX-oriData.oriX)});
+		ztable_dragData.isDrag = oriData.dragFather;
+		ztable_dragData.koData = oriData.dragKoData;
+		tempDiv.offset({top: parseInt(e.clientY+jBody.scrollTop()+20),left: parseInt(e.clientX+jBody.scrollLeft()+10)});
+	});
+});
+
+jBody.delegate(".zero-grid-headerCell2", "mouseover", function(e){
+	var self = $(this);
+	var dragFather = ztable_dragData.isDrag;
+	if(!dragFather || dragFather!=self.attr("father")){
+		return;
+	}
+	var tempDiv = $(".zero-lb-bound").height(self.height());
+	var before = false;
+	if(e.clientX - (self.offset().left+self.width()/2)<=0){
+		before = true;
+		tempDiv.offset(self.offset());
+	}
+	else{
+		tempDiv.offset({top: self.offset().top, left: self.offset().left+self.width()})
+	}
+	tempDiv.appendTo(jBody);
+	jBody.addClass("zero-unselected");
+	self.bind('mouseup', function(){
+		console.log(ztable_dragData.koData.parent());
+		self.unbind('mouseleave').unbind('mouseup');
+		tempDiv.offset({top:-99, left:-99});
+		jBody.trigger("mouseup");
+	});
+	self.bind('mouseleave', function(e){
+		tempDiv.offset({top:-99, left:-99});
+	});
+});
+
+</script>
